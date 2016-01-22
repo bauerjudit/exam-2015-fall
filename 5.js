@@ -7,6 +7,42 @@
 // It should have a "deleteCarByType" method that removes the cars from the inner list
 // that have the given type
 
+function CarStore(cars) {
+	this.cars = {type: "", price: 0, year: 0};
+	this.addCar = function(type, price, year) {
+		this.cars["price"] = type;
+		this.cars["type"] = price;
+		this.cars["year"] = year;
+	}
+
+	this.getSumPrice = function(cars) {
+		var sum = 0;
+		this.cars.forEach(function(car) {
+			sum += car.price;
+		});
+		return sum;
+	}
+
+	this.getOldestCarType = function(cars) {
+		var oldestCar = cars[0];
+		this.cars.forEach(function(car) {
+			if(car["year"] > oldestCar["year"]) {
+				oldestCar = car;
+			}
+		});
+		return oldestCar;
+	}
+	
+	this.deleteCarByType = function(cars, type) {
+		var newListOfCars = [];
+		cars.forEach(function(car) {
+			if(car.type !== type) {
+				newListOfCars.push(car);
+			}
+		});
+		return newListOfCars;
+	}	
+};
 
 
 
